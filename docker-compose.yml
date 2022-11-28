@@ -1,0 +1,83 @@
+  services:
+
+    zookeeper:
+      image: wurstmeister/zookeeper
+      container_name: zookeeper
+      hostname: zookeeper
+      ports:
+        - "2181:2181"
+
+    kafka-broker:
+        image: wurstmeister/kafka:2.12-2.3.1
+        hostname: kafka-broker
+        container_name: kafka-broker
+        depends_on:
+          - zookeeper
+        environment:
+          KAFKA_ADVERTISED_HOST_NAME: kafka-broker
+          KAFKA_CREATE_TOPICS: "flight_delay_classification_request:1:1"
+          KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+
+        ports:
+          - "9092:9092"
+
+    spark-master:
+      image: bde2020/spark-master:3.1.2-hadoop3.2
+      volumes:
+        - .:/app/
+      hostname: spark-master
+      container_name: spark-master
+      ports:
+        - "7077:7077"
+      environment:
+        - "constraint:node==<yourmasternode>"
+
+    spark-worker-1:
+      image: bde2020/spark-worker:3.1.2-hadoop3.2
+      container_name: spark-worker-1
+      volumes:
+        - .:/app/
+      depends_on:
+        - spark-master
+      ports:
+        - "8081:8081"
+      environment:
+        - "SPARK_MASTER=spark://spark-master:7077"
+        - "constraint:node==<yourworkernode>"
+
+    spark-submit:
+      depends_on: 
+        - flask
+      image: bde2020/spark-submit:3.1.2-hadoop3.2
+      #image: sparksubmit:2.4.0-hadoop2.7
+      volumes:
+        - .:/app/
+      environment:
+        - "ENABLE_INIT_DAEMON=false"
+        - "SPARK_MASTER_NAME=spark-master"
+        - "SPARK_MASTER_PORT=7077"
+        - "SPARK_APPLICATION_JAR_LOCATION=/app/practica_big_data_2019/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.2.jar"
+        - "SPARK_APPLICATION_MAIN_CLASS=es.upm.dit.ging.predictor.MakePrediction"
+        - "SPARK_SUBMIT_ARGS=--packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2"
+      container_name: spark-submit
+
+    mongod:
+      depends_on: 
+        - kafka-broker
+      image: mongo:4.4
+      container_name: mongod
+      hostname: mongod
+      ports:
+        - "27017:27017"
+      volumes:
+        - .:/app/
+
+    flask:
+      depends_on: 
+        - mongod
+        - kafka-broker
+      build: flask/.
+      ports:
+        - "5001:5001"
