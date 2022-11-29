@@ -1,20 +1,20 @@
-#Predictor de vuelos BDFI2022
+# Predictor de vuelos BDFI2022
 
 Proyecto final de la asignatura BDFI del Master Universitario en Ingeniería de Telecomunicación. Los componentes del grupo que ha realizado el proyecto son:
 
-    - José Ignacio Mora Pérez.
-    - Javier Mazarío Picazo.
+- José Ignacio Mora Pérez.
+- Javier Mazarío Picazo.
 
 Los puntos que se han conseguido completar del proyecto son:
 
-    - Lograr el funcionamiento del proyecto sin realizar modificaciones.
-    - Ejecución del job de predicción con Spark Submit en lugar de IntelliJ.
-    - Despliegue del escenario completo usando Docker Compose.
-    - Entrenar el modelo mediante Apache Airflow.
+- Lograr el funcionamiento del proyecto sin realizar modificaciones.
+- Ejecución del job de predicción con Spark Submit en lugar de IntelliJ.
+- Despliegue del escenario completo usando Docker Compose.
+- Entrenar el modelo mediante Apache Airflow.
 
-##Docker compose
+## Docker compose
 
-###Despliegue del escenario
+### Despliegue del escenario
 
 En primer lugar, se debe clonar el repositiorio mediante:
 
@@ -35,7 +35,7 @@ Para parar el escenario, se debe ejcutar el siguiente comando en el directorio r
 ./stop.sh
 ```
 
-# Apache Airflow
+## Apache Airflow
 
 Para Apache Airflow se han configurado una serie de scripts para su ejecución.
 
