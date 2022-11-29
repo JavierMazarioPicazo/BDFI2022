@@ -39,7 +39,7 @@ Para parar el escenario, se debe ejcutar el siguiente comando en el directorio r
 
 Para Apache Airflow se han configurado una serie de scripts para su ejecución.
 
-###Lanzamiento del servidor web de Airflow y su respectiva configuración:
+### Lanzamiento del servidor web de Airflow y su respectiva configuración:
 
 El script desarrollado para esta ejecución debe ser modificado para que funcione correctamente. Se debe modificar la ruta de la variable de entorno `PROJECT_HOME`. Una vez realizado esto, se debe ejecutar en el directorio raíz del proyecto:
 
@@ -47,7 +47,8 @@ El script desarrollado para esta ejecución debe ser modificado para que funcion
 ./airflow_webserver.sh
 ```
 Una vez realizado esto, podrá acceder a la interfaz web de Airflow a través de la dirección http://localhost:8080/
-###Ejecución del Scheduler de Airflow:
+
+### Ejecución del Scheduler de Airflow:
 
 Para este propósito se debe ejecutar el siguiente comando:
 
@@ -55,7 +56,7 @@ Para este propósito se debe ejecutar el siguiente comando:
 ./airflow_scheduler.sh
 ```
 
-###Adición y ejecución del DAG:
+### Adición y ejecución del DAG:
 
 Para añadir el DAG `agile_data_science_batch_prediction_model_training`, se debe ejecutar en el directorio raíz el siguiente comando:
 
