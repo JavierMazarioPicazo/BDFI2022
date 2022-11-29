@@ -1,6 +1,6 @@
 # Predictor de vuelos BDFI2022
 
-Proyecto final de la asignatura BDFI del Master Universitario en Ingeniería de Telecomunicación. Los componentes del grupo que ha realizado el proyecto son:
+Proyecto final de la asignatura BDFI del Master Universitario en Ingeniería de Telecomunicación. Los componentes del grupo son:
 
 - José Ignacio Mora Pérez.
 - Javier Mazarío Picazo.
@@ -41,7 +41,7 @@ Para Apache Airflow se han configurado una serie de scripts para su ejecución.
 
 ### Lanzamiento del servidor web de Airflow y su respectiva configuración:
 
-El script desarrollado para esta ejecución debe ser modificado para que funcione correctamente. Se debe modificar la ruta de la variable de entorno `PROJECT_HOME`. Una vez realizado esto, se debe ejecutar en el directorio raíz del proyecto:
+El script desarrollado para esta ejecución `airflow_webserver.sh`, debe ser modificado para que funcione correctamente. Se debe modificar la ruta de la variable de entorno `PROJECT_HOME` con la ruta donde se haya clonado el repositorio. Una vez realizado esto, se debe ejecutar en el directorio raíz del proyecto:
 
 ```sh
 ./airflow_webserver.sh
