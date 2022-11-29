@@ -1,1 +1,2 @@
+#!/bin/bash
 airflow dags trigger agile_data_science_batch_prediction_model_training
