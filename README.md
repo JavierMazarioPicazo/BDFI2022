@@ -38,7 +38,7 @@ Para parar el escenario, se debe ejcutar el siguiente comando en el directorio r
 
 ## Apache Airflow
 
-Para Apache Airflow se han configurado una serie de scripts para su ejecución.
+Para la ejecución de Apache Airflow se han configurado una serie de scripts.
 
 ### Lanzamiento del servidor web de Airflow y su respectiva configuración:
 
