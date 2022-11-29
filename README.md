@@ -12,17 +12,18 @@ Los puntos que se han conseguido completar del proyecto son:
 - Despliegue del escenario completo usando Docker Compose.
 - Entrenar el modelo mediante Apache Airflow.
 
+
 ## Docker compose
 
 ### Despliegue del escenario
 
-En primer lugar, se debe clonar el repositiorio mediante:
+En primer lugar, se debe clonar el repositiorio mediante el siguiente comando:
 
 ```sh
 git clone https://github.com/JavierMazarioPicazo/BDFI2022.git
 ```
 
-Se ha creado un script de shell que se encarga de arrancar el escenario. Ejecuta tanto el docker-compose.yml, como import_distances.sh para importar los datos al contenedor de mongodb. Para ello, se debe ejecutar el siguiente comando en el directorio raíz del proyecto:
+Con el objetivo de facilitar la ejecución del proyecto, se ha creado un script de shell que se encarga de arrancar el escenario. Ejecuta tanto el docker-compose.yml, como import_distances.sh para importar los datos al contenedor de mongodb. Para ello, se debe ejecutar el siguiente comando en el directorio raíz del proyecto:
 
 ```sh
 ./start.sh
